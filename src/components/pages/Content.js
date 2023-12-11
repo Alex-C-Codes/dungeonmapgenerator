@@ -41,8 +41,8 @@ export default function Content() {
             </ul> */}
 
             <CalculateEncounter />
-            <RandomEncounter />
-            <RandomDungeon />
+            {/* <RandomEncounter />
+            <RandomDungeon /> */}
 
         </div>
     )

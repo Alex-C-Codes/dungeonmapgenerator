@@ -151,31 +151,42 @@ export default function Content() {
     return (
         <div className="content-page">
             <h2>Calculate Encouter Difficulty</h2>
-            <div>
-                <form>
-                    <label>Number of Characters</label>
-                    <input 
-                        type="text"
-                        id="characterNumber"
-                        name="characterNumber"
-                        value={numberOfChar}
-                        onChange={(event) => setCharNumValue(event.target.value)}
-                    /><br></br>
-                    <label>Character Level</label>
-                    <input
-                        type="text"
-                        id="character"
-                        name="characterLevel"
-                        value={charLevel}
-                        onChange={(event) => setCharLevelValue(event.target.value)}
-                    /><br></br>
-                </form>
+            <div className="container">
 
-                <button type="submit" name="addRow" value="AddRow" onClick={addRow()}>Add Row</button>
+                <div className="box">
+                    <form>
+                        <div style={{float:"left", marginRight:"20px"}}>
+                            <label>Number of Characters</label>
+                            <input 
+                                type="text"
+                                placeholder="Number of Characters"
+                                id="characterNumber"
+                                name="characterNumber"
+                                value={numberOfChar}
+                                onChange={(event) => setCharNumValue(event.target.value)}
+                            />
+                        </div>
+                        <div style={{float:"left", marginRight:"20px"}}>
+                            <label>Character Level</label>
+                            <input
+                                type="text"
+                                placeholder="Character Level"
+                                id="character"
+                                name="characterLevel"
+                                value={charLevel}
+                                onChange={(event) => setCharLevelValue(event.target.value)}
+                            />
+                        </div>
+                    </form>
+                </div>
 
-                <button type="submit" name="calculate" value="Calculate" onClick={showDiv}>Calculate</button>
+                <div>
+                    <button type="submit" name="addRow" value="AddRow" onClick={addRow()}>Add Row</button>
 
-                <div id="welcomeDiv"  style={{display:'none'}} className="answer_list" >
+                    <button type="submit" name="calculate" value="Calculate" onClick={showDiv}>Calculate</button>
+                </div>
+
+                <div id="welcomeDiv" style={{display:'none', marginTop:"20px"}} className="answer_list" >
                     {calculateXP()}
                     <ul>
                         <li>Easy: {easyXP} XP</li>
