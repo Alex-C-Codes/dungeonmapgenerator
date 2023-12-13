@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // reference: https://kastark.co.uk/rpgs/encounter-calculator-5th/
 
-export default function Content() {
+export default function CalculateEncounter() {
 
     var easyXP;
     var mediumXP;
@@ -133,20 +133,28 @@ export default function Content() {
         mediumXP = medium * numberOfChar;
         hardXP = hard * numberOfChar;
         deadlyXP = deadly * numberOfChar;
-
-        // console.log(difficultyArr);
-
-        // return xp;
-        // return difficultyArr;
     }
 
     function showDiv() {
         document.getElementById('welcomeDiv').style.display = "block";
     }
 
-    function addRow() {
-        console.log('hello');
-    }
+    const [rows, setRows] = useState([]);
+
+    function addRow(tableID) {
+        const newRow = { id: rows.length + 1, content: 'New Row' };
+        setRows([...rows, newRow]);
+        // var rows = this.state.rows;
+        // rows.push('new row');
+        // console.log(rows);
+        // console.log("row added");
+
+        // let tableRef = document.getElementById(tableID);
+        // let newRow = tableRef.inertRow(-1);
+        // let newCell = newRow.insertCell(0);
+        // let newText = document.createTextNode("New bottom row");
+        // newCell.appendChild(newText);
+    };
     
     return (
         <div className="content-page">
@@ -154,7 +162,27 @@ export default function Content() {
             <div className="container">
 
                 <div className="box">
+
+                    {/* <table id="my-table">
+                        <tr>
+                            <td>Row 1</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3</td>
+                        </tr>
+                    </table> */}
+
                     <form>
+                        {rows.map((row, i) => (
+                            <tr key={row.id}>
+                                <td>{row.id}</td>
+                                <td>{row.content}</td>
+                            </tr>
+                        ))}
+
                         <div style={{float:"left", marginRight:"20px"}}>
                             <label>Number of Characters</label>
                             <input 
@@ -181,7 +209,7 @@ export default function Content() {
                 </div>
 
                 <div>
-                    <button type="submit" name="addRow" value="AddRow" onClick={addRow()}>Add Row</button>
+                    <button type="submit" name="addRow" value="AddRow" onClick={addRow}>Add Row</button>
 
                     <button type="submit" name="calculate" value="Calculate" onClick={showDiv}>Calculate</button>
                 </div>
