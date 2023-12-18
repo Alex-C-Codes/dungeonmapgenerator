@@ -142,7 +142,10 @@ export default function CalculateEncounter() {
     const [rows, setRows] = useState([]);
 
     function addRow(tableID) {
-        const newRow = { id: rows.length + 1, content: 'New Row' };
+        const newRow = { 
+            id: rows.length + 1, 
+            content: 'New Row' 
+        };
         setRows([...rows, newRow]);
         // var rows = this.state.rows;
         // rows.push('new row');
@@ -162,49 +165,68 @@ export default function CalculateEncounter() {
             <div className="container">
 
                 <div className="box">
-
-                    {/* <table id="my-table">
-                        <tr>
-                            <td>Row 1</td>
-                        </tr>
-                        <tr>
-                            <td>Row 2</td>
-                        </tr>
-                        <tr>
-                            <td>Row 3</td>
-                        </tr>
-                    </table> */}
-
                     <form>
-                        {rows.map((row, i) => (
+
+                        {/* {rows.map((row, i) => (
                             <tr key={row.id}>
                                 <td>{row.id}</td>
                                 <td>{row.content}</td>
                             </tr>
-                        ))}
+                        ))} */}
 
-                        <div style={{float:"left", marginRight:"20px"}}>
-                            <label>Number of Characters</label>
-                            <input 
-                                type="text"
-                                placeholder="Number of Characters"
-                                id="characterNumber"
-                                name="characterNumber"
-                                value={numberOfChar}
-                                onChange={(event) => setCharNumValue(event.target.value)}
-                            />
-                        </div>
-                        <div style={{float:"left", marginRight:"20px"}}>
-                            <label>Character Level</label>
-                            <input
-                                type="text"
-                                placeholder="Character Level"
-                                id="character"
-                                name="characterLevel"
-                                value={charLevel}
-                                onChange={(event) => setCharLevelValue(event.target.value)}
-                            />
-                        </div>
+                        <table>
+                            <tr>
+                                <th>Number of Characters</th>
+                                <th>Character Level</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input 
+                                        type="text"
+                                        placeholder="Number of Characters"
+                                        id="characterNumber"
+                                        name="characterNumber"
+                                        value={numberOfChar}
+                                        onChange={(event) => setCharNumValue(event.target.value)}
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        placeholder="Character Level"
+                                        id="character"
+                                        name="characterLevel"
+                                        value={charLevel}
+                                        onChange={(event) => setCharLevelValue(event.target.value)}
+                                    />
+                                </td>
+                            </tr>
+
+                            {rows.map((row, i) => (
+                                <tr key={row.id}>
+                                    <td>
+                                        <input 
+                                            type="text"
+                                            placeholder="Number of Characters"
+                                            id="characterNumber"
+                                            name="characterNumber"
+                                            value={numberOfChar}
+                                            onChange={(event) => setCharNumValue(event.target.value)}
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            placeholder="Character Level"
+                                            id="character"
+                                            name="characterLevel"
+                                            value={charLevel}
+                                            onChange={(event) => setCharLevelValue(event.target.value)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </table>
                     </form>
                 </div>
 
